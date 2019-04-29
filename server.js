@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const books = require('./routes/api/books');
+const search = require('./routes/api/search');
 
 const app = express();
 
@@ -18,6 +19,7 @@ mongoose.connect(db)
 
 
 app.use('/api/books', books);
+app.use('/api/search', search);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));

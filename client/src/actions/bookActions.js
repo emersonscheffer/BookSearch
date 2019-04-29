@@ -1,5 +1,27 @@
 import axios from 'axios';
-import { GET_BOOKS, ADD_BOOK, DELETE_BOOK, BOOKS_LOADING } from './types';
+import { GET_BOOKS, ADD_BOOK, DELETE_BOOK, BOOKS_LOADING, SEND_SEARCH, GET_SEARCHBACK } from './types';
+
+export const sendSearch = search => dispatch => {
+    axios
+        .post('/api/search', search)
+        .then(res =>
+            dispatch ({
+                type: SEND_SEARCH,
+                payload: res.data
+            }))
+            
+};
+
+export const getSearchArr = () => dispatch => {
+    axios
+        .get('/api/search')
+        .then(res => 
+            dispatch({
+                type: GET_BOOKS,
+                payload: res.data
+            }))
+
+}
 
 export const getBooks = () => dispatch => {
     dispatch(setBooksLoading());
@@ -20,7 +42,7 @@ export const addBook = book => dispatch => {
                 type: ADD_BOOK,
                 payload: res.data
             })
-        );
+        )
 };
 
 export const deleteBook = id => dispatch => {
@@ -36,6 +58,6 @@ export const deleteBook = id => dispatch => {
 
 export const setBooksLoading = () => {
     return {
-        type: BOOKS_LOADING,
+        type: BOOKS_LOADING
     };
 };

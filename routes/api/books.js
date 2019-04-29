@@ -13,7 +13,11 @@ router.get('/', (req, res) => {
 //@route Get api/items
 router.post('/', (req, res) => {
     const newBook = new Book({
-        title: req.body.title
+        title: req.body.title,
+        authors: req.body.authors,
+        description: req.body.description,
+        imageThumb: req.body.imageThumb,
+        linkToBook: req.body.linkToBook
     });
     newBook.save().then(book => res.json(book));
 });

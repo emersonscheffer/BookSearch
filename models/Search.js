@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create schema
-const BookSchema = new Schema({
+const SearchSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -27,4 +27,4 @@ const BookSchema = new Schema({
 });
 
 
-module.exports = Book = mongoose.model('book', BookSchema);
+module.exports = Search = mongoose.model('search', SearchSchema);
