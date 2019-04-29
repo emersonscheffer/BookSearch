@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const db = 'mongodb://localhost:27017/googlebooks';
+const db = process.env.MONGODB_URI || "mongodb://emersonbook:Nicolas2017@ds153785.mlab.com:53785/heroku_5htxgcjc";
 
 //connect
 mongoose.connect(db)
